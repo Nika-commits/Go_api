@@ -10,18 +10,18 @@ type BalanceParams struct {
 }
 
 type BalanceResponse struct {
-	Code int
+	Code    int
 	Balance float64
 }
 
 type Error struct {
-	Code int
+	Code    int
 	Message string
 }
 
-func writeError(w http.ResponseWriter, messsage string, code int){
+func writeError(w http.ResponseWriter, messsage string, code int) {
 	resp := Error{
-		Code: code,
+		Code:    code,
 		Message: messsage,
 	}
 
@@ -30,3 +30,13 @@ func writeError(w http.ResponseWriter, messsage string, code int){
 
 	json.NewEncoder(w).Encode(resp)
 }
+
+var (
+	RequestErrorHandler = func(w http.ResponseWriter, err error) {
+		writeError(w, err.Error(), http.StatusBadRequest)
+	}
+	InternalErrorHandler = func(w http.ResponseWriter) {
+		writeError(w, "An unexpected error occured", http.StatusInternalServerError)
+	}
+)
+
