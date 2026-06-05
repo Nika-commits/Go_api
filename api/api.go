@@ -11,7 +11,7 @@ type BalanceParams struct {
 
 type BalanceResponse struct {
 	Code    int
-	Balance float64
+	Balance int64
 }
 
 type Error struct {

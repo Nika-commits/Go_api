@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
+	"github.com/Nika-commits/Go_api/internal/handlers"
 	"github.com/go-chi/chi"
-
-	// "github.com/Nika-commits/`Go_api/internal/handlers"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -14,11 +14,11 @@ func main() {
 	var r *chi.Mux = chi.NewRouter()
 	handlers.Handler(r)
 
-	fmt.Prinln("--------------- Starting Go API Service by Pranish ---------------")
+	fmt.Println("--------------- Starting Go API Service by Pranish ---------------")
 
 	err := http.ListenAndServe("8080", r)
 
 	if err != nil {
 		log.Error(err)
-	} 
+	}
 }

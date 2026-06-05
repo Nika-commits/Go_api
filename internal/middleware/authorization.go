@@ -5,8 +5,7 @@ import (
 	"net/http"
 
 	"github.com/Nika-commits/Go_api/api"
-
-	// "github.com/Nika-commits/Go_api/internal/tools"
+	"github.com/Nika-commits/Go_api/internal/tools"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -33,7 +32,7 @@ func Authorization(next http.Handler) http.Handler {
 		}
 
 		var loginDetails *tools.LoginDetails
-		loginDetails = (*&database).GetUserLoginDetails(username)
+		loginDetails = (*database).GetUserLoginDetails(username)
 
 		if loginDetails == nil || (token != (*loginDetails).AuthToken) {
 			log.Error(UnAuthorizedError)

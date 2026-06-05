@@ -46,7 +46,7 @@ func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
 	return &clienData
 }
 
-func (d *mockDB) GetUserCoinDetails(username string) *CoinDetails {
+func (d *mockDB) GetUserCoins(username string) *CoinDetails {
 	time.Sleep(time.Second * 1)
 
 	var coinData = CoinDetails{}
